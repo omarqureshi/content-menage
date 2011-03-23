@@ -1,0 +1,26 @@
+<% @page_title = "New content" -%>
+
+<div class="container">
+  <%= form_for @content do |f| %>
+    <fieldset>
+      <legend><%= @page_title %></legend>
+      <ul class="no-bullets">
+        <li>
+          <%= f.label :title %>
+          <%= f.text_field :title, :class => "text" %>
+        </li>
+        <li>
+          <%= f.label :kind %>
+          <%= f.select :kind, Content.subclasses.map {|x| [x.to_s, x.to_s.downcase]} %>
+        </li>
+        <li>
+          <%= f.label :publish_date %>
+          <%= f.date_select :publish_date %>
+        </li>
+        <li>
+          <%= submit_tag "Create" %>
+        </li>
+      </ul>
+    </fieldset>
+  <% end %>
+</div>

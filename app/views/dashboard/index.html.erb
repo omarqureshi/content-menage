@@ -1,0 +1,31 @@
+<% @page_title = "Dashboard" -%>
+<div class="twenty-four-col">
+  <div class="twenty-four-col">
+    <h2>Recently created</h2>
+    <% if @content_published_today.any? %>
+  
+    <% else %>
+      <p class="inner-message">No content has been created</p>
+    <% end %>
+  </div>
+
+  <div class="twenty-four-col">
+    <h2>Published today</h2>
+    <% if @content_published_today.any? %>
+  
+    <% else %>
+      <p class="inner-message">No content has been published today</p>
+    <% end %>
+  </div>
+  
+  <div class="twenty-four-col">
+    <h2>Upcoming</h2>
+    <% if @content_published_today.any? %>
+  
+    <% else %>
+      <p class="inner-message">No content has been created</p>
+    <% end %>
+  </div>
+  
+  
+</div>
