@@ -130,3 +130,16 @@ label {
   float: left;
   text-align: left;
 }
+
+span.separator {
+  display: block;
+  float: left;
+}
+
+select#content_publish_date_3i {
+  margin-right: 20px;
+}
+
+ul.no-margin {
+  margin-bottom: 0px;
+}

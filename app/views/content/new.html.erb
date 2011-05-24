@@ -3,8 +3,8 @@
 <div class="container" id="new-content">
   <%= form_for @content do |f| %>
     <fieldset>
-      <legend><%= @page_title %></legend>
-      <ul class="no-bullets">
+      <legend class="hidden"><%= @page_title %></legend>
+      <ul class="no-bullets no-margin">
         <li>
           <%= f.label :title %>
           <%= f.text_field :title, :class => "text" %>
@@ -15,7 +15,7 @@
         </li>
         <li>
           <%= f.label :publish_date %>
-          <%= f.datetime_select :publish_date %>
+          <%= f.datetime_select :publish_date, :time_separator => "<span class=\"separator\">:</span>".html_safe, :date_separator => "<span class=\"separator\">&mdash;</span>".html_safe, :datetime_separator => "" %>
         </li>
         <li>
           <%= submit_tag "Create", :class => "submit" %>
