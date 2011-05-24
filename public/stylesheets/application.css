@@ -2,6 +2,10 @@ html {
   background: #BCD4E6;
 }
 
+.submit {
+  float: right;
+}
+
 header#masthead {
   background: #000000;
   color: #fffafa;
@@ -105,9 +109,10 @@ form fieldset ul {
 
 form fieldset ul li {
   display: block;
-  float: none;
+  float: left;
   width: 700px;
   clear: left;
+  padding-bottom: 10px;
 }
 
 form fieldset ul li input {

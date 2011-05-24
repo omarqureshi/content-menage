@@ -6,7 +6,7 @@ $(document).ready(function() {
 	/* Using custom settings */
 	
 	$("a.fancybox").each(function() {
-	  $(this).fancybox({showCloseButton: true});
+	    $(this).fancybox({showCloseButton: true, padding: 20});
 	})
 	
 });

@@ -1,0 +1,21 @@
+<% @page_title = "Edit #{@content.title}" %>
+
+
+<div class="container" id="edit-content">
+  <%= form_for :content, :as => @content do |f| %>
+    <fieldset>
+      <legend><%= @page_title %></legend>
+      <ul class="no-bullets">
+        <% @content.viewable_fields.each do |field| %>
+          <li>
+            <%= show_content_label(field) %>
+            <%= show_content_field(field) %>
+          </li>
+        <% end %>
+        <li>
+          <%= submit_tag "Save" %>
+        </li>
+      </ul>
+  <% end %>
+</div>
+

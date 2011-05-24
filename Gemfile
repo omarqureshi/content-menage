@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.0.5'
-gem "mongoid", :git => "https://github.com/mongoid/mongoid.git"
+gem "mongoid", '2.0.0'
 gem "bson_ext", "~> 1.2"
 gem 'factory_girl', '2.0.0.beta2'
 gem 'factory_girl_rails', '1.1.beta1'

@@ -1,6 +1,6 @@
 <% @page_title = "New content" -%>
 
-<div class="container">
+<div class="container" id="new-content">
   <%= form_for @content do |f| %>
     <fieldset>
       <legend><%= @page_title %></legend>
@@ -15,10 +15,10 @@
         </li>
         <li>
           <%= f.label :publish_date %>
-          <%= f.date_select :publish_date %>
+          <%= f.datetime_select :publish_date %>
         </li>
         <li>
-          <%= submit_tag "Create" %>
+          <%= submit_tag "Create", :class => "submit" %>
         </li>
       </ul>
     </fieldset>

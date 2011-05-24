@@ -11,7 +11,7 @@
     <h1><%= @page_title || "Content M&eacute;nage".html_safe %></h1>
     <nav>
       <ul class="no-bullets">
-        <li class="<%= "active " if params[:controller] == "dashboard" %> first">Dashboard</li>
+        <li class="<%= "active " if params[:controller] == "dashboard" %> first"><%= link_to "Dashboard", "/" %></li>
         <li><%= link_to "New content", new_content_path, :class => "fancybox" %></li>
       </ul>
     </nav>

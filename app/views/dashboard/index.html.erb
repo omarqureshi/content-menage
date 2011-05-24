@@ -2,8 +2,12 @@
 <div class="twenty-four-col">
   <div class="twenty-four-col">
     <h2>Recently created</h2>
-    <% if @content_published_today.any? %>
-  
+    <% if @recent_content.any? %>
+      <ul>
+        <% @recent_content.each do |content| %>
+          <li><%= content.inspect %></li>
+        <% end %>
+      </ul>
     <% else %>
       <p class="inner-message">No content has been created</p>
     <% end %>
@@ -11,19 +15,27 @@
 
   <div class="twenty-four-col">
     <h2>Published today</h2>
-    <% if @content_published_today.any? %>
-  
+    <% if @recent_published.any? %>
+      <ul>
+        <% @recent_published.each do |content| %>
+          <li><%= content.inspect %></li>
+        <% end %>
+      </ul>
     <% else %>
-      <p class="inner-message">No content has been published today</p>
+      <p class="inner-message">No content is in a published state</p>
     <% end %>
   </div>
   
   <div class="twenty-four-col">
     <h2>Upcoming</h2>
-    <% if @content_published_today.any? %>
-  
+    <% if @upcoming_content.any? %>
+      <ul>
+        <% @recent_published.each do |content| %>
+          <li><%= content.inspect %></li>
+        <% end %>
+      </ul>
     <% else %>
-      <p class="inner-message">No content has been created</p>
+      <p class="inner-message">No content to be published in the future</p>
     <% end %>
   </div>
   
