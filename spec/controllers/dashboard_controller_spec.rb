@@ -13,22 +13,31 @@ describe DashboardController do
     
     it "fetches recent content" do
       Content.should_receive(:recent).once
-      get :index
+      do_get
     end
     
     it "fetches recent published content" do
       Content.should_receive(:published).once
-      get :index
+      do_get
     end
     
     it "fetches upcoming content" do
       Content.should_receive(:upcoming).once
-      get :index
+      do_get
+    end
+    
+    it "should be successful" do
+      do_get
+      response.should be_success
     end
     
     it "should render with the index template" do
-      get :index
+      do_get
       response.should render_template("index")
+    end
+    
+    def do_get(opts={})
+      get :index, {}.merge(opts)
     end
     
   end

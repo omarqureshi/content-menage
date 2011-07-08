@@ -3,6 +3,7 @@ class Content
   include Mongoid::Versioning
   include Mongoid::Timestamps
   include Mongoid::MultiParameterAttributes
+    
   field :title,         :type => String
   field :slug,          :type => String
   field :publish_date,  :type => Time
