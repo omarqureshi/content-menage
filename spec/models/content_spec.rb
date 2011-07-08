@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Content do
   it { should validate_presence_of :title }
   it { should validate_presence_of :publish_date }
-  it { should reference_many_and_be_referenced_in :tags }
+  it { should embed_many :tags }
   
   it "should allow blank end dates" do
     @content = Factory.build(:content, :end_date => nil)

@@ -136,7 +136,15 @@ span.separator {
   float: left;
 }
 
+span.time-zone {
+  margin-left: 10px;
+}
+
 select#content_publish_date_3i {
+  margin-right: 20px;
+}
+
+select#content_end_date_3i {
   margin-right: 20px;
 }
 

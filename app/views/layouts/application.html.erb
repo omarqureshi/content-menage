@@ -8,7 +8,7 @@
 </head>
 <body>
   <header id="masthead">
-    <h1><%= @page_title || "Content M&eacute;nage".html_safe %></h1>
+    <h1><%= "Content M&eacute;nage".html_safe %><% if @page_title %> &mdash; <%= @page_title %><% end %></h1>
     <nav>
       <ul class="no-bullets">
         <li class="<%= "active " if params[:controller] == "dashboard" %> first"><%= link_to "Dashboard", "/" %></li>

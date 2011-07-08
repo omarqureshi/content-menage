@@ -11,11 +11,11 @@
         </li>
         <li>
           <%= f.label :kind %>
-          <%= f.select :kind, Content.subclasses.map {|x| [x.to_s, x.to_s.downcase]} %>
+          <%= f.select :kind, Content.children.map {|x| [x.to_s, x.to_s.downcase]} %>
         </li>
         <li>
           <%= f.label :publish_date %>
-          <%= f.datetime_select :publish_date, :time_separator => "<span class=\"separator\">:</span>".html_safe, :date_separator => "<span class=\"separator\">&mdash;</span>".html_safe, :datetime_separator => "" %>
+          <%= f.datetime_select :publish_date, :time_separator => "<span class=\"separator\">:</span>".html_safe, :date_separator => "<span class=\"separator\">&mdash;</span>".html_safe, :datetime_separator => "" %> <span class="separator time-zone">UTC</span>
         </li>
         <li>
           <%= submit_tag "Create", :class => "submit" %>

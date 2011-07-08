@@ -2,14 +2,14 @@
 
 
 <div class="container" id="edit-content">
-  <%= form_for :content, :as => @content do |f| %>
+  <%= form_for :content, :as => @content, :url => content_path(@content), :html => {:method => "put"} do |f| %>
     <fieldset>
       <legend><%= @page_title %></legend>
       <ul class="no-bullets">
-        <% @content.viewable_fields.each do |field| %>
+        <% @content.fields_for_display.each do |field| %>
           <li>
-            <%= show_content_label(field) %>
-            <%= show_content_field(field) %>
+            <%= show_content_label(field[1], f) %>
+            <%= show_content_field(field[1], f) %>
           </li>
         <% end %>
         <li>
@@ -17,5 +17,6 @@
         </li>
       </ul>
   <% end %>
+  <%= button_to "Destroy", content_path(@content), :method => :delete %>
 </div>
 
