@@ -1,10 +1,19 @@
 <div class="container" id="login">
-  <%= form_tag do %>
+  <%= form_tag session_path do %>
     <fieldset>
       <legend>Login</legend>
       <ul>
-        <li><%= email_field_tag :email %></li>
-        <li><%= password_field_tag :password %></li>
+        <li>
+          <%= label_tag :email %>
+          <%= email_field_tag :email %>
+        </li>
+        <li>
+          <%= label_tag :password %>
+          <%= password_field_tag :password %>
+        </li>
+        <li>
+          <%= submit_tag "Login" %>
+        </li>
       </ul>
     </fieldset>
   <% end %>

@@ -1,5 +1,6 @@
 class ContentController < ApplicationController
   layout :set_layout
+  before_filter :ensure_logged_in
   
   def new
     @content = Content.new

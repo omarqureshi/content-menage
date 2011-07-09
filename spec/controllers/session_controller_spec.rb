@@ -20,9 +20,7 @@ describe SessionController do
     context "given correct authentication parameters" do
       let(:user) { mock_model(User) }
       before do
-        User.stub!(:with_email).and_return([user])
-        user.stub!(:authenticate).and_return(user)
-        User.stub!(:where).and_return([user])
+        authentication_stub(user)
       end
       
       it "should redirect" do

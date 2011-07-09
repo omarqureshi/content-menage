@@ -1,4 +1,5 @@
 class DashboardController < ApplicationController
+  before_filter :ensure_logged_in
   
   def index
     @recent_content = Content.recent.limit(10)

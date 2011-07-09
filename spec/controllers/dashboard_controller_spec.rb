@@ -4,11 +4,13 @@ describe DashboardController do
   
   describe "GET index" do
     let(:content) { [mock_model(Content)] }
+    let(:user) { mock_model(User) }
     before do
       [:recent, :published, :upcoming].each {|classification|
         Content.stub!(classification).and_return(content)
       }
       content.stub!(:limit).and_return(content)
+      authentication_stub(user)
     end
     
     it "fetches recent content" do
@@ -37,7 +39,7 @@ describe DashboardController do
     end
     
     def do_get(opts={})
-      get :index, {}.merge(opts)
+      get :index, {}.merge(opts), {:user_id => user.id}
     end
     
   end

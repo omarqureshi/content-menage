@@ -8,13 +8,18 @@
 </head>
 <body>
   <header id="masthead">
-    <h1><%= "Content M&eacute;nage".html_safe %><% if @page_title %> &mdash; <%= @page_title %><% end %></h1>
+    <h1><%= APP_TITLE %><% if @page_title %> &mdash; <%= @page_title %><% end %></h1>
     <nav>
       <ul class="no-bullets">
-        <li class="<%= "active " if params[:controller] == "dashboard" %> first"><%= link_to "Dashboard", "/" %></li>
-        <li><%= link_to "New content", new_content_path, :class => "fancybox" %></li>
+        <% if current_user %>
+          <li class="<%= "active " if params[:controller] == "dashboard" %> first"><%= link_to "Dashboard", "/" %></li>
+          <li><%= link_to "New content", new_content_path, :class => "fancybox" %></li>
+        <% else %>
+          <li<%= " class=\"active\"" if params[:controller] == "session"%>><%= link_to "Login", login_path %></li>
+        <% end %>
       </ul>
     </nav>
+
   </header>
   <div id="wrapper" class="wrapper">
     <div id="inner-wrapper" class="inner-wrapper">

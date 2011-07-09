@@ -18,3 +18,9 @@ RSpec.configure do |config|
     DatabaseCleaner.clean
   end
 end
+
+def authentication_stub(user)
+  User.stub!(:with_email).and_return([user])
+  user.stub!(:authenticate).and_return(user)
+  User.stub!(:where).and_return([user])
+end

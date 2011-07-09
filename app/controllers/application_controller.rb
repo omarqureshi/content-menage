@@ -9,6 +9,11 @@ class ApplicationController < ActionController::Base
   def current_user
     @current_user ||= User.where(:_id => session[:user_id]).first
   end
+  
+  def ensure_logged_in
+    redirect_to login_path unless current_user
+  end
+  
   helper_method :current_user
   
 end
