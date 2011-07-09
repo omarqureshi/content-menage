@@ -10,6 +10,7 @@ class Content
   field :end_date,      :type => Time
   field :published,     :type => Boolean
   embeds_many :tags, :inverse_of => :content
+  embeds_many :downloadables, :inverse_of => :content
   
   after_create :set_slug
   
@@ -72,6 +73,10 @@ class Content
   end
 
   def self.text_area_fields
+    []
+  end
+  
+  def self.downloadable_tags
     []
   end
   

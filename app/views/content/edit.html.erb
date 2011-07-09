@@ -1,5 +1,19 @@
 <% @page_title = "Edit #{@content.title}" %>
 
+<% if @content.downloadable_tags.any? || @content.downloadables.any? %>
+  <div class="container" id="edit-assets">
+    <ul>
+      <% @content.downloadables.each do |downloadable| %>
+        <li><%= downloadable.inspect %></li>
+      <% end %>
+      <% if @content.downloadable_tags.any? %>
+        <li>
+        
+        </li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 
 <div class="container" id="edit-content">
   <%= form_for :content, :as => @content, :url => content_path(@content), :html => {:method => "put"} do |f| %>
