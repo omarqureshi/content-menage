@@ -18,7 +18,7 @@ module ContentHelper
     elsif field.type.kind_of? Integer
       builder.select(field.name, options_for_select((Content::MIN_PRIORITY..Content::MAX_PRIORITY).to_a, field.value || Content::DEFAULT_PRIORITY))
     else
-      raise "Unknown type"
+      raise "Unknown type #{field.type}"
     end
   end
   
