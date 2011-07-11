@@ -3,14 +3,24 @@ class Content
   include Mongoid::Versioning
   include Mongoid::Timestamps
   include Mongoid::MultiParameterAttributes
-    
+  
+  MIN_PRIORITY = 1
+  MAX_PRIORITY = 100
+  DEFAULT_PRIORITY = 50
+  
   field :title,         :type => String
   field :slug,          :type => String
   field :publish_date,  :type => Time
   field :end_date,      :type => Time
   field :published,     :type => Boolean
+  field :priority,      :type => Integer
   embeds_many :tags, :inverse_of => :content
   embeds_many :downloadables, :inverse_of => :content
+  
+  validates_numericality_of :priority, :only_integer => true, 
+                                       :greater_than_or_equal_to => MIN_PRIORITY,
+                                       :less_than_or_equal_to => MAX_PRIORITY,
+                                       :allow_nil => false
   
   after_create :set_slug
   
@@ -33,8 +43,7 @@ class Content
   scope :published, lambda {
     any_of({:end_date.gt => Time.now.utc}, {:end_date => nil}).
     where(:published => true).
-    where(:publish_date.lte => Time.now.utc).
-    order_by(:published_date => -1)
+    where(:publish_date.lte => Time.now.utc)
   }
   
   scope :upcoming, lambda {

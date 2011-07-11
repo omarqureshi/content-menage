@@ -16,6 +16,8 @@ module ContentHelper
                               :include_blank => (field.name != "publish_date")) + content_tag(:span, "UTC", :class => "time-zone separator")
     when Boolean
       builder.check_box field.name
+    when Integer
+      builder.select(field.name, options_for_select((Content::MIN_PRIORITY..Content::MAX_PRIORITY).to_a, field.value || Content::DEFAULT_PRIORITY))
     end
   end
   
