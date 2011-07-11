@@ -16,7 +16,7 @@ module ContentHelper
     elsif field.type.kind_of? Boolean
       builder.check_box field.name
     elsif field.type == Integer
-      builder.select(field.name, options_for_select((Content::MIN_PRIORITY..Content::MAX_PRIORITY).to_a, field.value || Content::DEFAULT_PRIORITY))
+      builder.select(field.name, options_for_select((Content::MIN_PRIORITY..Content::MAX_PRIORITY).to_a, @content.send(field.name) || Content::DEFAULT_PRIORITY))
     else
       raise "Unknown type #{field.type} - #{field.type.inspect} || #{field.inspect}"
     end
