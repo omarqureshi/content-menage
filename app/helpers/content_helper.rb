@@ -15,7 +15,7 @@ module ContentHelper
                               :include_blank => (field.name != "publish_date")) + content_tag(:span, "UTC", :class => "time-zone separator")
     elsif field.type.kind_of? Boolean
       builder.check_box field.name
-    elsif field.type.kind_of? Integer
+    elsif field.type == Integer
       builder.select(field.name, options_for_select((Content::MIN_PRIORITY..Content::MAX_PRIORITY).to_a, field.value || Content::DEFAULT_PRIORITY))
     else
       raise "Unknown type #{field.type} - #{field.type.inspect} || #{field.inspect}"
