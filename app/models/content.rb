@@ -20,7 +20,7 @@ class Content
   validates_numericality_of :priority, :only_integer => true, 
                                        :greater_than_or_equal_to => MIN_PRIORITY,
                                        :less_than_or_equal_to => MAX_PRIORITY,
-                                       :allow_nil => false
+                                       :allow_nil => true
   
   after_create :set_slug
   
