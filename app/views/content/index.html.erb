@@ -10,7 +10,7 @@
   <ul>
     <li><%= link_to "All", content_index_path(:type => params[:type]) %></li>
     <% @users.each do |user| %>
-      <li><%= link_to user.name, content_index_path(:user_id => user.id, :type => params[:type])%></li>
+      <li><%= link_to user.full_name, content_index_path(:user_id => user.id, :type => params[:type])%></li>
     <% end %>
   </ul>
   
