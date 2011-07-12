@@ -1,7 +1,7 @@
 class String
   
-  def namespace_capitalize
-    self.split("::").collect(&:capitalize).join("::")
+  def namespace_classify
+    self.split("::").collect(&:classify).join("::")
   end
   
 end

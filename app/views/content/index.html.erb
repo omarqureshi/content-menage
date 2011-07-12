@@ -2,7 +2,7 @@
   Filter by type
   <ul>
     <li><%= link_to "All", content_index_path(:user_id => params[:user_id]) %></li>
-    <% Content.children.map {|x| [x.to_s, x.to_s.downcase]}.each do |type| %>
+    <% Content.children.map {|x| [x.to_s, x.to_s.underscore]}.each do |type| %>
       <li><%= link_to type[0], content_index_path(:type => type[1], :user_id => params[:user_id]) %></li>
     <% end %>
   </ul>

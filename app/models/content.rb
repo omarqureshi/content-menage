@@ -71,14 +71,14 @@ class Content
 #  }
 
   scope :with_namespace, lambda { |namespace|
-    where(:type => namespace.namespace_capitalize)
+    where(:type => namespace.namespace_classify)
   }
 
   
   def self.new(*args)
     if self == Content
       this = super
-      this = this.kind.namespace_capitalize.constantize.send(:new, *args) if this.kind
+      this = this.kind.namespace_classify.constantize.send(:new, *args) if this.kind
       this
     else
       super

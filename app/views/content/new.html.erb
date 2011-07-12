@@ -11,7 +11,7 @@
         </li>
         <li>
           <%= f.label :kind %>
-          <%= f.select :kind, Content.children.map {|x| [x.to_s, x.to_s.downcase]} %>
+          <%= f.select :kind, Content.children.map {|x| [x.to_s, x.to_s.underscore]} %>
         </li>
         <li>
           <%= f.label :publish_date %>
