@@ -1,0 +1,40 @@
+<div class="twenty-four-col">
+  Filter by type
+  <ul>
+    <li><%= link_to "All", content_type(:user_id => params[:user_id]) %></li>
+    <% Content.children.map {|x| [x.to_s, x.to_s.downcase]}.each do |type| %>
+      <li><%= link_to type[0], content_path(:type => type[1], :user_id => params[:user_id]) %></li>
+    <% end %>
+  </ul>
+  Filter by user
+  <ul>
+    <li><%= link_to "All", content_path(:type => params[:type] %></li>
+    <% @users.each do |user| %>
+      <li><%= link_to user.name, content_path(:user_id => user.id, :type => params[:type])%></li>
+    <% end %>
+  </ul>
+  
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Status</th>
+        <th>Published At</th>
+        <th>Created By</th>
+        <th>Created At</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <% for content in @content do %>
+          <% edit_link = edit_content_path(content) %>
+          <td><%= link_to content.title, edit_link %></td>
+          <td><%= link_to content.status, edit_link %></td>
+          <td><%= link_to content.published_date, edit_link %></td>
+          <td><%= link_to content.user.full_name, edit_link %></td>
+          <td><%= link_to content.created_at, edit_link %></td>
+        <% end %>
+      </tr>
+    </tbody>
+  </table>
+</div>

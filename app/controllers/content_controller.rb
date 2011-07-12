@@ -2,6 +2,14 @@ class ContentController < ApplicationController
   layout :set_layout
   before_filter :ensure_logged_in
   
+  def index
+    @users = User.all
+    @content = Content
+    @content = @content.of_type(params[:type]) if params[:type]
+    @content = @content.by_user_id(params[:user_id]) if params[:user_id]
+    @content = @content.all
+  end
+  
   def new
     @content = Content.new
     if request.xhr?
@@ -10,7 +18,7 @@ class ContentController < ApplicationController
   end
   
   def create
-    @content = Content.new(params[:content])
+    @content = Content.new(params[:content], :user_id => current_user.id)
     if @content.save
       redirect_to edit_content_path(@content)
     else

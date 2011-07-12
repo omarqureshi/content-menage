@@ -14,6 +14,7 @@ class Content
   field :end_date,      :type => Time
   field :published,     :type => Boolean
   field :priority,      :type => Integer
+  references_one :user, :inverse_of => :content
   embeds_many :tags, :inverse_of => :content
   embeds_many :downloadables, :inverse_of => :content
   
@@ -54,6 +55,14 @@ class Content
   
   scope :recent, lambda {
     order_by(:published_date => -1)
+  }
+  
+  scope :of_type, lambda { |type|
+    where(:_type => type)
+  }
+  
+  scope :by_user_id, lambda { |user_id|
+    where(:user_id => user_id)
   }
   
 #  scope :with_namespace_prefix, lambda { |namespace|

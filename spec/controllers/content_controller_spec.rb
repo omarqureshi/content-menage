@@ -95,5 +95,26 @@ describe ContentController do
       post :update, {:id => article.id, :content => {:title => "Test article", :kind => "article", :publish_date => Date.today}}, {:user_id => user.id}
     end
   end
+  
+  describe 'GET index' do
+    let(:user) { mock_model(User) }
+    before do
+      authentication_stub(user)
+    end
+    
+    it "should be successful" do
+      do_get
+      response.should be_success
+    end
+    
+    it "should redirect to the index page" do
+      do_get
+      response.should render_template("index")
+    end
+    
+    def do_get
+      get :index, {}, {:user_id => user.id}
+    end
+  end
 
 end
