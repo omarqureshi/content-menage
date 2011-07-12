@@ -1,16 +1,16 @@
 <div class="twenty-four-col">
   Filter by type
   <ul>
-    <li><%= link_to "All", content_type(:user_id => params[:user_id]) %></li>
+    <li><%= link_to "All", content_index_path(:user_id => params[:user_id]) %></li>
     <% Content.children.map {|x| [x.to_s, x.to_s.downcase]}.each do |type| %>
-      <li><%= link_to type[0], content_path(:type => type[1], :user_id => params[:user_id]) %></li>
+      <li><%= link_to type[0], content_index_path(:type => type[1], :user_id => params[:user_id]) %></li>
     <% end %>
   </ul>
   Filter by user
   <ul>
-    <li><%= link_to "All", content_path(:type => params[:type] %></li>
+    <li><%= link_to "All", content_index_path(:type => params[:type]) %></li>
     <% @users.each do |user| %>
-      <li><%= link_to user.name, content_path(:user_id => user.id, :type => params[:type])%></li>
+      <li><%= link_to user.name, content_index_path(:user_id => user.id, :type => params[:type])%></li>
     <% end %>
   </ul>
   
@@ -26,7 +26,7 @@
     </thead>
     <tbody>
       <tr>
-        <% for content in @content do %>
+        <% @content.each do |content| %>
           <% edit_link = edit_content_path(content) %>
           <td><%= link_to content.title, edit_link %></td>
           <td><%= link_to content.status, edit_link %></td>
