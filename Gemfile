@@ -3,6 +3,7 @@ source 'http://rubygems.org'
 gem 'rake', '0.9.2'
 gem 'rails', '3.1.0.rc4'
 gem "mongoid", '2.0.2'
+gem 'sass'
 gem "bson_ext", "~> 1.3"
 gem 'factory_girl', '2.0.0.beta2'
 gem 'factory_girl_rails', '1.1.beta1'
