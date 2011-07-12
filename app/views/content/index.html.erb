@@ -20,6 +20,7 @@
         <th>Title</th>
         <th>Type</th>
         <th>Status</th>
+        <th>Priority</th>
         <th>Published At</th>
         <th>Created By</th>
         <th>Created At</th>
@@ -32,6 +33,7 @@
           <td><%= link_to content.title, edit_link %></td>
           <td><%= link_to content._type, edit_link %></td>
           <td><%= link_to content.status, edit_link %></td>
+          <td><%= link_to content.priority, edit_link %></td>
           <td><%= link_to content.publish_date.to_s(:db), edit_link %></td>
           <td><%= link_to content.user.full_name, edit_link %></td>
           <td><%= link_to content.created_at.to_s(:db), edit_link %></td>
