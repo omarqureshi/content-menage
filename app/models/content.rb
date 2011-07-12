@@ -50,11 +50,11 @@ class Content
   scope :upcoming, lambda {
     where(:published => true).
     where(:publish_date.gte => Time.now.utc).
-    order_by(:published_date => 1)
+    order_by(:publish_date => 1)
   }
   
   scope :recent, lambda {
-    order_by(:published_date => -1)
+    order_by(:publish_date => -1)
   }
   
   scope :of_type, lambda { |type|
@@ -109,7 +109,7 @@ class Content
   end
   
   def self.order
-    [:published_date, :end_date, :published, :title]
+    [:publish_date, :end_date, :published, :title]
   end
   
   def set_slug
@@ -123,7 +123,7 @@ class Content
   
   def status
     now = Time.now.utc
-    if now >= published_date
+    if now >= publish_date
       if now <= end_date
         if published
           return "Published"

@@ -30,7 +30,7 @@
           <% edit_link = edit_content_path(content) %>
           <td><%= link_to content.title, edit_link %></td>
           <td><%= link_to content.status, edit_link %></td>
-          <td><%= link_to content.published_date, edit_link %></td>
+          <td><%= link_to content.publish_date, edit_link %></td>
           <td><%= link_to content.user.full_name, edit_link %></td>
           <td><%= link_to content.created_at, edit_link %></td>
         <% end %>
