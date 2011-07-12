@@ -121,6 +121,31 @@ class Content
     slug
   end
   
+  def status
+    now = Time.now.utc
+    if now >= published_date
+      if now <= end_date
+        if published
+          return "Published"
+        else
+          return "Pending Approval"
+        end
+      else
+        if published
+          return "Expired"
+        else
+          return "Expired and Pending"
+        end
+      end
+    else
+      if published
+        "Queued"
+      else
+        "Queued and Pending"
+      end
+    end
+  end
+  
   private
   
     def normalize_dates
