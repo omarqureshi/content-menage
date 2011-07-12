@@ -6,7 +6,7 @@ class User
   field :full_name,       :type => String
   field :password_digest, :type => String
   
-  referenced_in :content, :inverse_of => :user
+  has_many :content
   
   has_secure_password
   validates :password, :presence => { :on => :create }

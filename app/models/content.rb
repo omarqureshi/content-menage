@@ -14,7 +14,7 @@ class Content
   field :end_date,      :type => Time
   field :published,     :type => Boolean
   field :priority,      :type => Integer
-  references_one :user, :inverse_of => :content
+  belongs_to :user
   embeds_many :tags, :inverse_of => :content
   embeds_many :downloadables, :inverse_of => :content
   
