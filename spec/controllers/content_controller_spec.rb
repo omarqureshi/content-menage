@@ -72,7 +72,7 @@ describe ContentController do
     
   end
   
-  describe 'GET update' do
+  describe 'POST update' do
     let(:user) { mock_model(User) }
     let(:article) { mock_model(Article) }
     before do
@@ -86,9 +86,9 @@ describe ContentController do
       response.should be_redirect
     end
     
-    it "should redirect to the edit page" do
+    it "should redirect the content list page" do
       do_post
-      response.should redirect_to(content_path(article))
+      response.should redirect_to(content_index_path)
     end
     
     def do_post

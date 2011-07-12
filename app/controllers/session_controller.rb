@@ -7,7 +7,7 @@ class SessionController < ApplicationController
     user = User.with_email(params[:email]).first.try(:authenticate, params[:password])
     self.current_user = user
     if current_user
-      redirect_to params[:return_to] || "/"
+      redirect_to params[:return_to] || content_index_path
     else
       render :action => "new"
     end

@@ -22,7 +22,7 @@ class ContentController < ApplicationController
     if @content.save
       redirect_to edit_content_path(@content)
     else
-
+      raise 'Content not saved'
     end
   end
 
@@ -33,7 +33,7 @@ class ContentController < ApplicationController
   def update
     @content = get_content
     if @content.update_attributes(params[:content])
-      redirect_to content_path(@content)
+      redirect_to content_index_path
     else
       render :action => :edit
     end

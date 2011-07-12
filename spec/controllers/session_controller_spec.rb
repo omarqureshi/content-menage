@@ -28,9 +28,9 @@ describe SessionController do
         response.should be_redirect
       end
 
-      it "should redirect to the homepage if no return_to is specified" do
+      it "should redirect to the content list if no return_to is specified" do
         do_post
-        response.should redirect_to("/")
+        response.should redirect_to(content_index_path)
       end
 
       it "should redirect to a return_to location if a return_to location is specified" do
