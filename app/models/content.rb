@@ -58,7 +58,7 @@ class Content
   }
   
   scope :of_type, lambda { |type|
-    where(:_type => type)
+    where(:_type => type.namespace_classify)
   }
   
   scope :by_user_id, lambda { |user_id|
@@ -70,9 +70,9 @@ class Content
 #    where(:type)
 #  }
 
-  scope :with_namespace, lambda { |namespace|
-    where(:type => namespace.namespace_classify)
-  }
+# scope :with_namespace, lambda { |namespace|
+#   where(:_type => namespace.namespace_classify)
+# }
 
   
   def self.new(*args)
