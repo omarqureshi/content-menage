@@ -86,7 +86,7 @@ class Content
   end
   
   def fields_for_display
-    @viewable_fields ||= (fields.reject {|k, v| k.starts_with?('_') || %w(version created_at updated_at slug).include?(k) || k.ends_with?("_ids")}).
+    @viewable_fields ||= (fields.reject {|k, v| k.starts_with?('_') || %w(user_id version created_at updated_at slug).include?(k) || k.ends_with?("_ids")}).
                          sort {|a, b| (self.class.order.rindex(a[0].to_sym) || -1) <=> (self.class.order.rindex(b[0].to_sym) || -1)}
   end
 
