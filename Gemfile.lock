@@ -49,6 +49,8 @@ GEM
     database_cleaner (0.6.7)
     diff-lcs (1.1.2)
     erubis (2.7.0)
+    execjs (1.2.0)
+      multi_json (~> 1.0)
     factory_girl (2.0.0.beta2)
     factory_girl_rails (1.1.beta1)
       factory_girl (~> 2.0.0.beta)
@@ -138,6 +140,9 @@ GEM
     treetop (1.4.9)
       polyglot (>= 0.3.1)
     tzinfo (0.3.29)
+    uglifier (1.0.0)
+      execjs (>= 0.3.0)
+      multi_json (>= 1.0.2)
 
 PLATFORMS
   ruby
@@ -158,3 +163,4 @@ DEPENDENCIES
   rspec
   rspec-rails
   stringex
+  uglifier
