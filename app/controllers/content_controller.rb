@@ -18,7 +18,7 @@ class ContentController < ApplicationController
   end
   
   def create
-    @content = Content.new(params[:content], :user_id => current_user.id)
+    @content = Content.new(params[:content].merge(:user_id => current_user.id))
     if @content.save
       redirect_to edit_content_path(@content)
     else
