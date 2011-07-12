@@ -124,7 +124,7 @@ class Content
   def status
     now = Time.now.utc
     if now >= publish_date
-      if now <= end_date
+      if end_date.nil? || now <= end_date
         if published
           return "Published"
         else
