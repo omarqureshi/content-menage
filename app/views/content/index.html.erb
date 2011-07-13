@@ -27,18 +27,19 @@
       </tr>
     </thead>
     <tbody>
+      <% @content.each do |content| %>
       <tr>
-        <% @content.each do |content| %>
-          <% edit_link = edit_content_path(content) %>
-          <td><%= link_to content.title, edit_link %></td>
-          <td><%= link_to content._type, edit_link %></td>
-          <td><%= link_to content.status, edit_link %></td>
-          <td><%= link_to content.priority, edit_link %></td>
-          <td><%= link_to content.publish_date.to_s(:db), edit_link %></td>
-          <td><%= link_to content.user.full_name, edit_link %></td>
-          <td><%= link_to content.created_at.to_s(:db), edit_link %></td>
-        <% end %>
+        <% edit_link = edit_content_path(content) %>
+        <td><%= link_to content.title, edit_link %></td>
+        <td><%= link_to content._type, edit_link %></td>
+        <td><%= link_to content.status, edit_link %></td>
+        <td><%= link_to content.priority, edit_link %></td>
+        <td><%= link_to content.publish_date.to_s(:db), edit_link %></td>
+        <td><%= link_to content.user.full_name, edit_link %></td>
+        <td><%= link_to content.created_at.to_s(:db), edit_link %></td>
       </tr>
+      <% end %>
+
     </tbody>
   </table>
 </div>
