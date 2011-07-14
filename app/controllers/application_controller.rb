@@ -16,4 +16,10 @@ class ApplicationController < ActionController::Base
   
   helper_method :current_user
   
+  rescue_from Mongoid::Errors::DocumentNotFound, :with => :error_404
+
+  def error_404
+    render :file => "#{Rails.root}/public/404.html", :status => :not_found
+  end
+  
 end
