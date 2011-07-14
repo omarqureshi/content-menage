@@ -18,7 +18,7 @@ module ContentHelper
     elsif field.type == Integer
       builder.select(field.name, options_for_select((Content::MIN_PRIORITY..Content::MAX_PRIORITY).to_a, @content.send(field.name) || Content::DEFAULT_PRIORITY))
     elsif field.type == Array && field.name == "website_sections"
-      builder.select(field.name, options_for_select([nil] + @content.class.website_sections), @content.send(field.name), :multiple => true)
+      builder.select(field.name, options_for_select(@content.class.website_sections, @content.send(field.name)), {}, :multiple => true)
     else
       raise "Unknown type #{field.type} - #{field.type.inspect} || #{field.inspect}"
     end
