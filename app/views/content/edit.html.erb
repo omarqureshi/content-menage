@@ -3,9 +3,11 @@
 <% if @content.class.downloadable_tags.any? || @content.downloadables.any? %>
   <div class="container" id="edit-assets">
     <ul>
-      <li>
-        <%= @downloadable %>
-      </li>
+      <% if @downloadable.persisted? %>
+        <li>
+          <%= @downloadable %>
+        </li>
+      <% end %>
       <% if @content.class.downloadable_tags.any? %>
         <li>
           <%= form_for :downloadable, :url => content_downloadables_path(@content), :html => {:method => "put", :multipart => true } do |f|  %>
@@ -21,19 +23,19 @@
                 <%= f.text_area :description %>
               </li>
               <li>
-                <% if @content.downloable_tags.size == 1 %>
-                  <% tag = @downloadable.tag || @content.downloadable_tags.first%>
-                  <%= f.hidden_field :tag, tag %>
+                <% if @content.class.downloadable_tags.size == 1 %>
+                  <% tag = @downloadable.tag || @content.class.downloadable_tags.first%>
+                  <%= f.hidden_field :tag, :value => tag %>
                   <%= tag %>
                 <% end %>
               </li>
               <li>
                 <%= f.hidden_field :downloadable_cache %>
-                <%= f.file_field :downloadable, "Choose a file to upload"%>
+                <%= f.label :downloadable, "Choose a file to upload"%>
                 <%= f.file_field :downloadable %>
               </li>
               <li>
-                <%= f.submit_tag "Upload" %>
+                <%= submit_tag "Upload" %>
               </li>
             </ul>
           </fieldset>

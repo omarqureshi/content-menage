@@ -2,7 +2,9 @@ ContentMenage::Application.routes.draw do
   root :to => "dashboard#index"
   resource :session, :controller => "session"
   
-  resources :content
+  resources :content do
+    resources :downloadables
+  end
   
   match '/login' => "session#new"
   match '/logout' => "session#destroy"
