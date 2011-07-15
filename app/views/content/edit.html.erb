@@ -1,11 +1,19 @@
 <% @page_title = "Edit #{@content.title}" %>
 
 <% if @content.class.downloadable_tags.any? || @content.downloadables.any? %>
-  <div class="container" id="edit-assets">
+  <div class="container no-bullets" id="edit-assets">
     <ul>
       <% if @downloadable.persisted? %>
         <li>
-          <%= @downloadable %>
+          <h2>Associated downloadables</h2>
+        <li>
+          <%= link_to @downloadable.title, @downlodable.downloadable_url %>
+        </li>
+        <li>
+          <%= link_to @downloadable.description, @downloadable.downloadable_url %>
+        </li>
+        <li>
+          <%= button_to "Destroy", content_downloadable_path(@content, @downloadable), :method => "delete" %>
         </li>
       <% end %>
       <% if @content.class.downloadable_tags.any? %>

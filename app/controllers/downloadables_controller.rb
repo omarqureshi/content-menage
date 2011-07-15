@@ -9,6 +9,13 @@ class DownloadablesController < ApplicationController
     redirect_to edit_content_path(@content)
   end
   
+  def destroy
+    @content = get_content
+    @downloadable = get_downloadable
+    @downloadable.destroy
+    redirect_to edit_content_path(@content)
+  end
+  
   private
   
     def get_content
