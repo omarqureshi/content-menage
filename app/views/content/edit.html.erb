@@ -10,7 +10,7 @@
       <% end %>
       <% if @content.class.downloadable_tags.any? %>
         <li>
-          <%= form_for :downloadable, :url => content_downloadables_path(@content), :html => {:method => "put", :multipart => true } do |f|  %>
+          <%= form_for :downloadable, :url => content_downloadables_path(@content), :html => {:multipart => true } do |f|  %>
           <fieldset>
             <legend>Add downloadable</legend>
             <ul class="no-bullets">
