@@ -4,7 +4,7 @@ class DownloadablesController < ApplicationController
   def create
     @content = get_content
     @downloadable = get_downloadable
-    @downloadable.attributes = params[:downlodable]
+    @downloadable.attributes = params[:downloadable]
     @downloadable.save
     redirect_to edit_content_path(@content)
   end
