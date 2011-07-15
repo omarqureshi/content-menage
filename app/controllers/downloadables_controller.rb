@@ -1,7 +1,7 @@
 class DownloadablesController < ApplicationController
   before_filter :ensure_logged_in
   
-  def create
+  def update
     @content = get_content
     @downloadable = get_downloadable
     @downloadable.attributes = params[:downlodable]
