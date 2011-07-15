@@ -7,8 +7,14 @@ class DownloadableUploader < CarrierWave::Uploader::Base
   # include CarrierWave::ImageScience
 
   # Choose what kind of storage to use for this uploader:
-  storage :file
-  # storage :fog
+  storage :cloud_files
+  
+  CarrierWave.configure do |config|
+    config.cloud_files_username = ""
+    config.cloud_files_api_key = ""
+    config.cloud_files_container = ""
+    config.cloud_files_auth_url = ""
+  end
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:

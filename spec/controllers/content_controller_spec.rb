@@ -52,8 +52,11 @@ describe ContentController do
   describe 'GET edit' do
     let(:user) { mock_model(User) }
     let(:article) { mock_model(Article) }
+    let(:downloadable) { mock_model(Downloadable) }
     before do
       authentication_stub(user)
+      Content.stub!(:find).and_return(article)
+      article.stub!(:downloadables).and_return([downloadable])
     end
     
     it "should be successful" do

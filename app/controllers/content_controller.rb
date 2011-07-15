@@ -28,6 +28,7 @@ class ContentController < ApplicationController
 
   def edit
     @content = get_content
+    @downloadable = get_downloadable
   end
   
   def update
@@ -57,6 +58,10 @@ class ContentController < ApplicationController
     
     def get_content
       Content.first(:conditions => {:slug => params[:id]})
+    end
+    
+    def get_downloadable
+      @content.downloadables.first || @content.downloadables.build
     end
   
 end

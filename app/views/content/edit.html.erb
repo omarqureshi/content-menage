@@ -3,12 +3,41 @@
 <% if @content.class.downloadable_tags.any? || @content.downloadables.any? %>
   <div class="container" id="edit-assets">
     <ul>
-      <% @content.downloadables.each do |downloadable| %>
-        <li><%= downloadable.inspect %></li>
-      <% end %>
+      <li>
+        <%= @downloadable %>
+      </li>
       <% if @content.class.downloadable_tags.any? %>
         <li>
-          Add downloadable
+          <%= form_for :downloadable, :url => content_downloadables_path(@content), :html => {:method => "put", :multipart => true } do |f|  %>
+          <fieldset>
+            <legend>Add downloadable</legend>
+            <ul class="no-bullets">
+              <li>
+                <%= f.label :title %>
+                <%= f.text_field :title %>
+              </li>
+              <li>
+                <%= f.label :description %>
+                <%= f.text_area :description %>
+              </li>
+              <li>
+                <% if @content.downloable_tags.size == 1 %>
+                  <% tag = @downloadable.tag || @content.downloadable_tags.first%>
+                  <%= f.hidden_field :tag, tag %>
+                  <%= tag %>
+                <% end %>
+              </li>
+              <li>
+                <%= f.hidden_field :downloadable_cache %>
+                <%= f.file_field :downloadable, "Choose a file to upload"%>
+                <%= f.file_field :downloadable %>
+              </li>
+              <li>
+                <%= f.submit_tag "Upload" %>
+              </li>
+            </ul>
+          </fieldset>
+          <% end %>
         </li>
       <% end %>
     </ul>
