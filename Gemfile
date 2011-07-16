@@ -18,3 +18,4 @@ gem 'cloudfiles'
 gem 'maruku'
 gem 'capistrano'
 gem 'uglifier'
+gem 'sprockets', :git => "git://github.com/sstephenson/sprockets.git"
